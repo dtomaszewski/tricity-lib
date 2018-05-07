@@ -116,6 +116,46 @@
           }
         }
       }
+    },
+    "tricity-custom-library": {
+      "root": "projects/tricity-custom-library",
+      "sourceRoot": "projects/tricity-custom-library/src",
+      "projectType": "library",
+      "prefix": "tcl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tricity-custom-library/tsconfig.lib.json",
+            "project": "projects/tricity-custom-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/tricity-custom-library/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tricity-custom-library/src/test.ts",
+            "tsConfig": "projects/tricity-custom-library/tsconfig.spec.json",
+            "karmaConfig": "projects/tricity-custom-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tricity-custom-library/tsconfig.lib.json",
+              "projects/tricity-custom-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "tricity-lib"
